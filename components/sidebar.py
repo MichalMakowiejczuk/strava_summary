@@ -19,22 +19,13 @@ def sidebar():
     with st.sidebar:
         if not st.session_state.access_token:
             st.info(about)
-            url = client.get_auth_url()
 
-            st.markdown(
-                f"""
-                <a href="{url}">
-                    <button style="
-                        width: 100%;
-                        padding: 0.5rem;
-                        font-size: 1rem;
-                    ">
-                        Authorize strava
-                    </button>
-                </a>
-                """,
-                unsafe_allow_html=True,
+            st.link_button(
+                "Authorize Strava",
+                client.get_auth_url(),
+                use_container_width=True,
             )
+
             st.stop()
 
         if st.session_state.access_token is not None:

@@ -23,33 +23,17 @@ def sidebar():
 
             st.markdown(
                 f"""
-                <a href="{url}" target="_top" id="strava-login" style="
-                    text-decoration: none;
-                    display: block;
-                    padding: 12px;
-                    background-color: #fc4c02;
-                    color: white;
-                    border-radius: 8px;
-                    text-align: center;
-                    font-weight: bold;
-                    border: none;
-                ">Authorize strava account</a>
+                <a href="{url}">
+                    <button style="
+                        width: 100%;
+                        padding: 0.5rem;
+                        font-size: 1rem;
+                    ">
+                        Authorize strava
+                    </button>
+                </a>
                 """,
                 unsafe_allow_html=True,
-            )
-
-            st.components.v1.html(
-                f"""
-                <script>
-                    var link = window.parent.document.getElementById("strava-login");
-                    if (link) {{
-                        link.addEventListener('click', function() {{
-                            window.open('{url}', '_top');
-                        }});
-                    }}
-                </script>
-                """,
-                height=0,
             )
             st.stop()
 

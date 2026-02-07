@@ -21,22 +21,9 @@ def sidebar():
             st.info(about)
             url = client.get_auth_url()
 
-            st.markdown(
-                f"""
-                <a href="{url}" target="_top" style="
-                    text-decoration: none;
-                    display: inline-block;
-                    padding: 0.5rem 1rem;
-                    background-color: #fc4c02;
-                    color: white;
-                    border-radius: 0.5rem;
-                    width: 100%;
-                    text-align: center;
-                    font-weight: 500;
-                ">Authorize Strava</a>
-                """,
-                unsafe_allow_html=True,
-            )
+            if st.button("Zaloguj przez Stravę", use_container_width=True):
+                js = f"window.top.location.href = '{url}'"
+                st.components.v1.html(f"<script>{js}</script>", height=0)
             st.stop()
 
         if st.session_state.access_token is not None:

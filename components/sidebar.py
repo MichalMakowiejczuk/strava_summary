@@ -16,6 +16,8 @@ def sidebar():
         st.query_params.clear()
         st.rerun()
 
+    st.write(client.get_auth_url())
+
     with st.sidebar:
         if not st.session_state.access_token:
             st.info(about)
